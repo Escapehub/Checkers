@@ -18,6 +18,14 @@ private:
 		sf::Color itemColor;
 		bool isSet = false;
 		bool isSelected = false;
+		int x = -1, y = -1;
+	};
+public:
+	struct Player
+	{
+		sf::Color color;
+		int number;
+		Player(int n, sf::Color c) : color(c), number(n) {}
 	};
 
 private:
@@ -25,7 +33,7 @@ private:
 	BoardItem* m_currentSelection = nullptr;
 
 public:
-	Board();
+	Board(Player*, Player*);
 
 	void update(sf::Vector2f);
 
