@@ -7,9 +7,8 @@
 #define BOARD_SIZE_Y 8
 #define SINGLE_BOARD_ITEM_SIZE 62.5
 
-class Board
+namespace BoardController
 {
-private:
 	struct BoardItem
 	{
 		sf::RectangleShape background;
@@ -20,7 +19,7 @@ private:
 		bool isSelected = false;
 		int x = -1, y = -1;
 	};
-public:
+
 	struct Player
 	{
 		sf::Color color;
@@ -28,16 +27,18 @@ public:
 		Player(int n, sf::Color c) : color(c), number(n) {}
 	};
 
-private:
-	BoardItem m_board[BOARD_SIZE_X][BOARD_SIZE_Y];
-	BoardItem* m_currentSelection = nullptr;
+	class Board
+	{
+	private:
+		BoardItem m_board[BOARD_SIZE_X][BOARD_SIZE_Y];
+		BoardItem* m_currentSelection = nullptr;
 
-public:
-	Board(Player*, Player*);
+	public:
+		Board(Player*, Player*);
 
-	void update(sf::Vector2f);
+		void update(Player*, sf::Vector2f);
 
-	void draw(sf::RenderWindow&);
-};
-
+		void draw(sf::RenderWindow&);
+	};
+}
 #endif // !__BOARD__
