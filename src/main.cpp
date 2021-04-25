@@ -1,10 +1,19 @@
 #include "board.h"
 
+using namespace BoardController;
+
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(500, 500), "Checkers");
 
-	Board* board = new Board();
+	Player* p1 = new Player(1, sf::Color::Yellow);
+	Player* p2 = new Player(2, sf::Color::Cyan);
+
+	printf("%p, %p\n", p1, p2);
+
+	Board* board = new Board(p1, p2);
+
+	Player* currentPlayer = p1;
 
 	while (window.isOpen())
 	{
@@ -16,7 +25,7 @@ int main()
 
 			if (event.type == sf::Event::MouseButtonPressed &&
 				event.mouseButton.button == sf::Mouse::Left)
-				board->update(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
+				board->update(currentPlayer, window.mapPixelToCoords(sf::Mouse::getPosition(window)));
 		}
 
 		window.clear();
