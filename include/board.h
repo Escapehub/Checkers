@@ -34,10 +34,27 @@ namespace BoardController
 		BoardItem* m_currentSelection = nullptr;
 
 	public:
+		/**
+		* Create board object
+		* 
+		* \param Player* pointer to player 1 object
+		* \param Player* pointer to player 2 object
+		*/
 		Board(Player*, Player*);
-
+		
+		/**
+		* Update board on mouse click
+		* 
+		* \param Player* pointer to current player object
+		* \param sf::Vector2f mouse position on window
+		*/
 		void update(Player*, sf::Vector2f);
 
+		/**
+		* Draw board and items to the screen
+		* 
+		* \param sf::RenderWindow& reference to window object
+		*/
 		void draw(sf::RenderWindow&);
 	};
 }

@@ -50,6 +50,7 @@ BoardController::Board::Board(Player* p1, Player* p2)
                 currentItem->isSet = true;
             }
 
+            /* Change background color */
             if (y != BOARD_SIZE_Y - 1)
             {
                 if (currentColor == sf::Color::Black)
